@@ -1,0 +1,11 @@
+.inline {
+    display: inline-block;
+    border: 1px black solid;
+    vertical-align: top;
+}
+.inline input {
+    display: block;
+}
+.inline img {
+    max-width: 300px;
+}

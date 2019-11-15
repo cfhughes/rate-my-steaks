@@ -17,6 +17,15 @@ module.exports = {
       .then(Steak => response.json(Steak))
       .catch(errorHandler.bind(response));
   },
+  createRating: function(request, response) {
+    Steak.findById(request.params.id)
+      .then(steak => {
+        steak.ratings.push(request.body)
+        return steak.save();
+      })
+      .then(steak => response.json(steak))
+      .catch(errorHandler.bind(response));
+  },
   update: function(request, response) {
     Steak.findByIdAndUpdate(request.params.id, request.body, { new: true })
       .then(Steak => response.json(Steak))
