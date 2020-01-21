@@ -18,6 +18,7 @@ module.exports = {
       .catch(errorHandler.bind(response));
   },
   createRating: function(request, response) {
+    console.log(request.body)
     Steak.findById(request.params.id)
       .then(steak => {
         steak.ratings.push(request.body)

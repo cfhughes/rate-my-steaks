@@ -19,7 +19,7 @@ app.use(helmet())
 require('./server/config/mongoose');
 
 // routes
-app.use('/steaks', require('./server/config/routes/steak.routes'));
+app.use('/steaks_json', require('./server/config/routes/steak.routes'));
 
 app.use(express.static( __dirname + '/public/dist/public' ));
 

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SteakService } from './steak.service';
+import { Steak } from './models/steak.model';
 
 @Component({
   selector: 'app-root',
@@ -7,8 +8,8 @@ import { SteakService } from './steak.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit{
-  steaks:any;
-  newSteak:any = {"title": "" , "description" : "" , "image" : ""}
+  steaks:Steak[];
+  newSteak:Steak = new Steak();
 
   constructor(private steakService:SteakService){}
 
@@ -17,24 +18,20 @@ export class AppComponent implements OnInit{
   }
 
   getSteaksFromService(){
-    this.steakService.getSteaks().subscribe((data:any[])=>{
+    this.steakService.getSteaks().subscribe((data:Steak[])=>{
       for (let steak of data){
         steak.newRating = {comment:"",rating:""};
       }
       this.steaks = data;
     })
+    console.log("Getting Steaks")
   }
 
   saveSteak(){
     this.steakService.saveSteak(this.newSteak).subscribe(()=>{
       this.getSteaksFromService();
     })
-    this.newSteak = {"title": "" , "description" : "" , "image" : ""}
+    this.newSteak = new Steak();
   }
 
-  saveRating(steak){
-    this.steakService.saveRating(steak._id, steak.newRating).subscribe(()=>{
-      this.getSteaksFromService();
-    })
-  }
 }

@@ -7,10 +7,12 @@ import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { SteakService } from './steak.service';
+import { DisplaysteakComponent } from './displaysteak/displaysteak.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    DisplaysteakComponent
   ],
   imports: [
     HttpClientModule,

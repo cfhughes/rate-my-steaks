@@ -8,12 +8,6 @@
 </form>
 </div>
 <div class="inline">
-  <div *ngFor="let steak of steaks">
-    <img src="{{steak.image}}">
-    <form (submit)="saveRating(steak)">
-      <input type="number" name="rating" id="rating" [(ngModel)]="steak.newRating.rating">
-      <input type="text" name="comment" id="comment" [(ngModel)]="steak.newRating.comment">
-      <input type="submit" value="Save">
-    </form>
-  </div>
+  <app-displaysteak *ngFor="let steak of steaks" [steak]="steak" (savedRating)="getSteaksFromService()" ></app-displaysteak>
+
 </div>
